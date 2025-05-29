@@ -3,6 +3,8 @@ package com.example.spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model; // import 할때 Spring (초록아이콘) 하셈
+
 
 @Controller
 @RequestMapping("main4")
@@ -69,7 +71,54 @@ public class Controller04 {
     // src/main/resources/templates/main4/sub4.html
 
     @RequestMapping("sub4")
-    public String sub4() {
+    public String sub4(Model model) {
+        model.addAttribute("userName", "돼지");
         return "main4/sub4";
+
     }
+
+    @RequestMapping("sub5")
+    public String sub5(Model model) {
+        // 1.요청 분석/가공
+        // 2.요청 처리(business logic)
+
+        // 3. 결과를 Model에 담기
+        model.addAttribute("name1", "결과 값1");
+        model.addAttribute("name2", "또 다른 결과");
+
+        // 4. view로 forwarding
+        return "main4/sub5";
+    }
+
+
+    // 연습:
+    // /main4/sub6 으로 요청 오면
+    // templates/main4/sub6.html 이 응답 되도록
+    // request handler method 작성
+
+    @RequestMapping("sub6")
+    public String sub6(Model model) {
+        model.addAttribute("name", "GOJO");
+        model.addAttribute("address", "Kyoto");
+        model.addAttribute("email", "jujutsu");
+        return "main4/sub6";
+    }
+
+    // 연습: 적절한 html 코드 작성
+    @RequestMapping("sub7")
+    public String sub7(Model model) {
+        model.addAttribute("age", 28);
+        model.addAttribute("score", 97.54);
+        model.addAttribute("school", "Jujutsu High");
+        model.addAttribute("city", "Tokyo");
+        return "main4/sub7";
+    }
+
+    @RequestMapping("sub8")
+    public String sub8(Model model) {
+        return "main4/sub8";
+    }
+
+
+
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jujutsu Sorcerers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0c0c0c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ffff;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px #00ffff55;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ffff99;
+        }
+
+        .name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .birth, .rank {
+            font-size: 1.1em;
+            margin: 5px 0;
+            color: #cccccc;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #ff5050;
+        }
+    </style>
+</head>
+<body>
+
+<h1>✨ Character ✨</h1>
+
+<div class="card-container">
+    <div class="card" th:each="s : ${sorcerers}">
+        <div class="name" th:text="${s.name}">Gojo</div>
+        <div class="birth">🎂 생일: <span th:text="${s.birth}">1989-12-07</span></div>
+        <div class="rank">🧪 등급: <span th:text="${s.rank}">0</span></div>
+    </div>
+</div>
+
+</body>
+</html>

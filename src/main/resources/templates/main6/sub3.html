@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>th:each 로 컬렉션에 있는 모든 요소 탐색</h1>
+<ul th:each="person : ${people}">
+    <li>
+        <span>학번</span>
+        <span th:text="${person.studentNumber}"></span>
+    </li>
+    <li>
+        <span>몸무게</span>
+        <span th:text="${person.weight}"></span>
+    </li>
+    <li>
+        <span>정보</span>
+        <span th:text="${person.info}"></span>
+    </li>
+    <li>
+        <span>결혼</span>
+        <span th:text="${person.married}"></span>
+    </li>
+</ul>
+</body>
+</html>

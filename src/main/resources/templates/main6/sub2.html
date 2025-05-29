@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 th:each="ai : ${aiList}" th:text="${ai}">Lorem.</h2>
+<hr>
+<h2 th:each="elem : ${mySet}" th:text="${elem}">fruit</h2>
+</body>
+</html>

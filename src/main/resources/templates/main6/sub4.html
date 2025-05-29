@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사람 정보 목록</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 60%;
+            margin: auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #0077cc;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td:last-child {
+            color: #007700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>사람 정보 목록</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>생일</th>
+        <th>가격</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${myList}">
+        <td th:text="${item.name}">이름</td>
+        <td th:text="${item.birthDate}">생일</td>
+        <td th:text="'₩' + ${item.price}">가격</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+<!--✅ 주요 포인트-->
+<!--th:each로 myList 반복 처리-->
+<!--td에 ${item.속성} 형태로 값 출력-->
+<!--가격 앞에 ₩ 붙이기 위해 |₩ ${item.price}| 사용 (Thymeleaf의 문자열 리터럴)-->
+<!--CSS로 중앙 정렬, 그림자 효과, hover 효과 등 적용-->

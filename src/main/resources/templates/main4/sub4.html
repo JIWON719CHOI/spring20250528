@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>핑크핑크 페이지</title>
+    <title>돼지 페이지</title>
     <style>
         body {
             margin: 0;
@@ -28,7 +28,7 @@
             margin-bottom: 20px;
         }
 
-        .button {
+        .pretty-button {
             background-color: #ff69b4;
             border: none;
             color: white;
@@ -39,7 +39,7 @@
             transition: background-color 0.3s ease;
         }
 
-        .button:hover {
+        .pretty-button:hover {
             background-color: #ff1493;
         }
 
@@ -56,13 +56,15 @@
 <body>
 
 <div class="box">
-    <h1>🩷 히히 🩷</h1>
+    <h1>🐷 돼지 🐖</h1>
     <p th:text="'안녕하세요, ' + ${userName} + ' 님!'">안녕하세요, 사용자님!</p>
-    <form th:action="@{/submit}" method="post">
-        <input type="text" name="message" placeholder="메시지를 입력하세요" required
+
+    <!-- 폼 제출 막는 방식 -->
+    <form onsubmit="event.preventDefault()">
+        <input type="text" name="message" placeholder="점심메뉴를 입력하세요" required
                style="padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
         <br><br>
-        <button type="submit" class="button">기능없음</button>
+        <button type="submit" class="pretty-button">기능없음</button>
     </form>
 </div>
 

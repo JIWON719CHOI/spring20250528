@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>LIST.</h1>
+<h1 th:text="${list[0]}">피곤하다.</h1>
+<h1 th:text="${list[1]}">집가고싶다.</h1>
+
+<hr>
+
+<h2>SET.</h2>
+<!-- 인덱스 접근 대신 each 반복문 사용 -->
+<h2 th:each="car : ${cars}" th:text="${car}">차 이름</h2>
+
+<hr>
+
+<h1>each 사용 (list)</h1>
+<h3 th:each="item : ${list}" th:text="${item}">반복 항목</h3>
+</body>
+</html>
