@@ -8,4 +8,5 @@ import java.util.List;
 public class MyBean0311 {
     private List<String> hobby;
     private List<Double> score;
+    private List<Integer> age;
 }
