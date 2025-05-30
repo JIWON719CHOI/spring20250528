@@ -120,7 +120,7 @@ public class Controller05 {
 
     @RequestMapping("sub11")
     public String sub11(Model model) {
-        MyBean055 k = new MyBean055(1207, String.valueOf(List.of("Gojo", "Satoru")), String.valueOf(List.of("Jujutsu", "Sorcerer")));
+        MyBean55 k = new MyBean55(1207, String.valueOf(List.of("Gojo", "Satoru")), String.valueOf(List.of("Jujutsu", "Sorcerer")));
 
         model.addAttribute("jujutsu", k);
         return "main5/sub11";

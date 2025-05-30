@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{main8/layout :: page-head('sub5 페이지', ~{::style} )}">
+    <style>
+        h1 {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+코드 조각 사용시 값 전달 가능
+-->
+<div th:replace="~{main8/layout :: side-bar('hello')}"></div>
+<div th:replace="~{main8/layout :: side-bar('bye')}"></div>
+
+
+<!-- 코드 조각 적용 시
+th:replace : 현재 요소 교체
+th:insert : 현재 요소 내에 삽입
+-->
+
+
+<!-- ~{} : 코드 조각 정보 -->
+<div th:insert="~{main8/layout :: navbar}"></div>
+<div th:replace="~{main8/layout :: navbar}"></div>
+
+<h1>sub5</h1>
+
+<!--
+layout.html에 footer fragment를 넣고
+아래 footer을 sub6.html 에도 적용
+-->
+<div th:replace="~{main8/layout :: footer}"/>
+
+</body>
+</html>

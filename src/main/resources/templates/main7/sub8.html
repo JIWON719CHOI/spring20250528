@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- 산술연산 -->
+<!-- 비교연산 -->
+<!-- person.number 는 98 -->
+<h1 th:text="${person.number > 100}"></h1>
+<h1 th:text="${person.number < 100}"></h1>
+<h1 th:text="${person.number >= 100}"></h1>
+<h1 th:text="${person.number <= 100}"></h1>
+<h1 th:text="${person.number == 100}"></h1>
+<h1 th:text="${person.number != 100}"></h1>
+
+<hr>
+
+<h1 th:text="${person.number gt 100}"></h1>
+<h1 th:text="${person.number lt 100}"></h1>
+<h1 th:text="${person.number ge 100}"></h1>
+<h1 th:text="${person.number le 100}"></h1>
+<h1 th:text="${person.number eq 100}"></h1>
+<h1 th:text="${person.number ne 100}"></h1>
+
+<hr>
+<!-- 조건연산 (삼항연산 ? : )  -->
+<h1 th:text="${person.number > 100 ? '100보다 큼' : '100보다 크지 않다'}"></h1>
+<!-- 중괄호 밖 조건연산 에서 false 부분을 생략 할 수 있음-->
+<h1 th:text="${person.number > 100} ? '100보다 큼' : '100보다 크지 않다'"></h1>
+<h1 th:text="${person.number > 100} ? '100보다 큼'"></h1>
+
+
+<!-- default expression (?:) : 값이 없으면(null)이면 기본값을 사용 -->
+<h1 th:text="${person.company[0]} ?: '회사 없음'"></h1>
+<h1 th:text="${person.company[2]} ?: '회사 없음'"></h1>
+
+</div>
+</body>
+</html>

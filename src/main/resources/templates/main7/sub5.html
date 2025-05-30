@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--th:block 요소 : rendering 때 출력되지 않음 -->
+<th:block th:object="${person}">
+  <h3 th:text="*{number}"></h3>
+  <h4>company</h4>
+  <ul>
+    <li th:each="c : *{company}" th:text="${c}"></li>
+  </ul>
+  <h4>address</h4>
+  <ul>
+    <li th:each="a : *{address}" th:text="${a}"></li>
+  </ul>
+</th:block>
+<hr>
+<div th:object="${person}">
+  <h3 th:text="*{number}"></h3>
+  <h4>company</h4>
+  <ul>
+    <li th:each="c : *{company}" th:text="${c}"></li>
+  </ul>
+  <h4>address</h4>
+  <ul>
+    <li th:each="a : *{address}" th:text="${a}"></li>
+  </ul>
+</div>
+</body>
+</html>

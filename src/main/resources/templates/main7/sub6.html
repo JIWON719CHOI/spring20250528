@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 아래와 같이 출력 되도록 expression inlining 활용해보기-->
+<ul th:object="${person}">
+    <li th:each="c,stat : *{company}">회사[[${stat.count}]] : [[${c}]]</li>
+</ul>
+<ul th:object="${person}">
+    <li th:each="a,stat : *{address}">주소[[${stat.count}]] : [[${a}]]</li>
+</ul>
+
+<hr>
+<ul>
+    <li>회사1 : tesla</li>
+    <li>회사2 : apple</li>
+</ul>
+<ul>
+    <li>주소1 : seoul</li>
+    <li>주소2 : jeju</li>
+</ul>
+
+<!-- expression inlining -->
+<h1>넘버 : [[${person.number}]]</h1>
+
+<h1 th:text="'넘버 : ' + ${person.number}"></h1>
+<h1>넘버 : <span th:text="${person.number}">11</span></h1>
+</body>
+</html>

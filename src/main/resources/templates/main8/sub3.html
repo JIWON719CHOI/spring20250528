@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--주소 쿼리스트링(request parameter들) 붙이기-->
+<a href="" th:href="@{/main8/sub2(abc='def',qwe='xyz')}">링크2</a><hr>
+<a href="" th:href="'/main8/sub2?abc=def&qwe=xyz'">링크1</a>
+<hr>
+<img style="width: 500px" src="../../static/images/03.jpg" art="" th:src="@{/images/03.jpg}">
+<!--주소 작성시 @{} 내에 작성하기-->
+<a href="/main8/sub2" th:href="@{/main8/sub2}">LINK2</a>
+<a href="/main8/sub1" th:href="'/main8/sub1'">LINK1</a>
+<a href="http://localhost:8080/main5/sub13">LOCAL</a>
+<a href="https://www.naver.com">NAVER</a>
+</body>
+</html>

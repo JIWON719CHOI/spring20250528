@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<!--/main8/sub4?animal=Gojo-->
+<!--/main8/sub4?animal=Satoru-->
+<!--/main8/sub4?animal=Jujutsu-->
+<a href="" th:href="'/main8/sub4'">HOME</a>
+<a href="" th:href="@{/main8/sub4(animal='gojo.jpg')}">GOJO</a>
+<a href="" th:href="@{/main8/sub4(animal='satoru.jpg')}">SATORU</a>
+<a href="" th:href="@{/main8/sub4(animal='jujutsu.png')}">JUJUTSU</a>
+
+<hr>
+
+<!--타임리프에서 아래와 같이 삼항연산자를 문법에 쓰고 싶을 땐-->
+<!--"@{${ ... 이런식으로 써줘야 한다. 그래야 ()괄호 안 내용을 인식해.-->
+<img style="width: 500px"
+     th:src="@{${'/images/' + (animal ?: 'gojosatoru.png')}}"
+     alt="동물 이미지" />
+</body>
+</body>
+</html>

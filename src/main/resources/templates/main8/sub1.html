@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue {background-color: lightskyblue;}
+        .pink {background-color: lightpink;}
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>무게</th>
+        <th>정보</th>
+        <th>결혼</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${students}">
+        <td th:text="${s.studentNumber}"></td>
+        <td th:text="${s.weight}"></td>
+        <td th:text="${s.info}"></td>
+        <td class="italic" th:text="${s.married}" th:classappend="${s.married} ? 'pink' : 'gray'" ></td>
+    </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!--th:attr append: 기존값에 이어쓰기-->
+<h3 class="big-text" th:classappend="'pink'">gojo</h3>
+<h3 class="big-text" th:attrappend="class='pink'">GOJO SATORU</h3>
+<h3 class="big-text" th:class="'pink'">SATORU</h3>
+
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>무게</th>
+        <th>이름</th>
+        <th>결혼</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.studentNumber}"></td>
+        <td th:text="${student.weight}"></td>
+        <td th:text="${student.info}"></td>
+        <td th:text="${student.married}" th:class="${student.married} ? 'pink' : 'blue'"></td>
+    </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- 연습 : tiger.jpg 를 출력하는 코드 -->
+<img style="width: 500px" src="../../static/images/04.jpg" alt="Gojo" th:src="@{/images/04.jpg}">
+<!--자주 사용되는 attribute를 적용하는 th:xxx 속성이 있음-->
+<img style="width: 500px" src="../../static/images/03.jpg" alt="고죠" th:src="@{/images/03.jpg}" th:alt="'qwe'">
+
+<hr>
+
+<h3 title="hello"
+    th:class="xyz"
+    th:title="bye"
+    th:attr="abc='def'">Lorem.</h3>
+
+<hr>
+
+<!--th:attr html element 의 attribute 를 적용하는 방법-->
+<h3 title="hello" th:attr="class='xyz'">lorem1</h3>
+<h3 title="hello" th:attr="class='xyz',abc='def'">lorem1</h3>
+<h3 title="hello" th:attr="class='xyz',abc='def',title='bye'">lorem1</h3>
+
+<hr>
+
+<h3 th:text="'hello'">lorem</h3>
+
+</body>
+</html>

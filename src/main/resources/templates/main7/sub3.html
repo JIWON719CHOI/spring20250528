@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* css 주석 */
+    </style>
+</head>
+<body>
+<!-- html 주석 -->
+<!-- 중요한 내용 작성하면 안됨-->
+
+<!--/* */-->
+
+<!--<h1 th:text="${'hello'}">text</h1>-->
+<!--/*<h1 th:text="${'hello'}">text</h1>*/-->
+
+<!--/*  thymeleaf 주석 : rendering 할 때 제거됨  */-->
+
+<ul>
+    <li th:each="item : ${myList}" th:text="${item}">some item1</li>
+    <!--/*-->
+<!--    렌더링시 사라짐-->
+    <li>some item2</li>
+    <li>some item3</li>
+    <li>some item4</li>
+    <!--*/-->
+</ul>
+
+<script>
+    // js 주석
+    /*
+    js 여러 줄 주석
+     */
+
+</script>
+</body>
+</html>

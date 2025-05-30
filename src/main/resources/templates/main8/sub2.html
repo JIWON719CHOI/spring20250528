@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .italic {font-style: italic;}
+        .bold {font-weight: bold; color: red}
+
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>생일</th>
+        <th>가격</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m : ${myList}">
+        <td th:text="${m.name}"></td>
+        <td th:text="${m.birthDate}"></td>
+        <td class="italic"
+            th:text="${m.price}"
+            th:classappend="${m.price >= 5000} ? 'bold'"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
