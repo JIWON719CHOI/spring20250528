@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> /main11/sub2 </h3>
+<form th:action="@{/main11/sub2}" method="post">
+
+    <button type="submit">더하기 1</button>
+</form>
+<hr>
+<h3>
+    결과
+    <span th:text="${count}">0</span>
+</h3>
+</body>
+</html>

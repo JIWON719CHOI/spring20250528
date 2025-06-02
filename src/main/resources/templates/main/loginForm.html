@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!--xmlns:th는 thymeleaf 전용 문법을 쓰겠다는 뜻입니다.-->
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+</head>
+<body>
+<!--사용자가 이름을 입력하고 POST 방식으로 /main/login 으로 보냅니다.-->
+<!--name="name"은 UserDto.name에 바인딩됩니다.-->
+<h3>로그인 폼</h3>
+<form th:action="@{/main/login}" method="post">
+  이름: <input type="text" name="name" required>
+  <button type="submit">로그인</button>
+</form>
+</body>
+</html>

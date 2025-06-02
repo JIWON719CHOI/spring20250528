@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>/main10/sub3 </h3>
+
+
+<!-- 연습 : -->
+
+<!--
+요청경로가 /main10/sub4로 요청보내는
+두 개의 form을 만들기
+하나는 get 방식으로
+하나는 post 방식으로
+
+get /main10/sub4 요청 처리하는 request handler method
+post /main10/sub4 요청 처리하는 request handler method
+-->
+
+<form action="/main10/sub4" method="get">
+    <input type="text" name="Hi" value="Hi">
+    <input type="submit" value="Greeting">
+</form>
+<form action="/main10/sub4" method="post">
+    <input type="text" name="Bye" value="Bye">
+    <input type="submit" value="Greeting">
+</form>
+
+<hr>
+
+<form action="/main10/sub3" method="get">
+    <input type="text" name="keyword" value="대통령">
+
+    <input type="submit" value="전송">
+</form>
+<hr>
+<form action="/main10/sub3" method="post">
+    <input type="text" name="address" value="서울">
+
+    <input type="submit" value="전송">
+</form>
+</body>
+</html>

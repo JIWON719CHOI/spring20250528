@@ -73,7 +73,4 @@ public class Controller08 {
 
         return "main8/sub6";
     }
-
-
-
 }

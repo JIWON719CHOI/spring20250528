@@ -1,0 +1,21 @@
+<!-- templates/main0/result.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>결과</title></head>
+<body>
+<h2>제출된 데이터:</h2>
+<ul>
+    <li th:each="entry : ${formData}">
+        <strong th:text="${entry.key}"></strong> : <span th:text="${entry.value}"></span>
+    </li>
+</ul>
+
+<p><strong>첨부파일 이름:</strong> <span th:text="${filename}"></span></p>
+<div th:if="${filePath != null}">
+    <img th:src="${filePath}" style="max-width: 200px;" />
+</div>
+
+
+<a th:href="@{/main0/sub0}">돌아가기</a>
+</body>
+</html>

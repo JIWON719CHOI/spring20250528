@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>/main11/sub3</h3>
+<!-- param : view 에서 request parameter에 접근할 수 있는 객체 -->
+<!--div*5>span*2-->
+<div>
+    <span> city </span>
+    :
+    <span th:text="${param.city}"></span>
+</div>
+<div>
+    <span>email</span>
+    :
+    <span th:text="${param.email}"></span>
+</div>
+<div>
+    <span>address</span>
+    :
+    <span th:text="${param.address}">address request parameter  출력</span>
+</div>
+<div>
+    <span>fruit</span>
+    :
+    <span th:text="${param.fruit[0]}"></span>
+</div>
+<div>
+    <span>fruit</span>
+    :
+    <span th:text="${param.fruit[1]}"></span>
+</div>
+<hr>
+
+<div th:each="entry : ${session.myValue}">
+    <div>
+        <span th:text="${entry.key}"></span>
+        :
+        <span th:text="${entry.value}"></span>
+    </div>
+</div>
+<hr>
+
+<div th:text="${session.myValue.name}"></div>
+<div th:text="${session.myValue.address}"></div>
+<div th:text="${session.myValue.age}"></div>
+<hr>
+<div>
+    model attribute :
+    <span th:text="${value}"></span>
+</div>
+
+<div>
+    session attribute :
+    <!--view에서 session attribute 에 접근하기-->
+    <span th:text="${session.randomValue}"></span>
+
+</div>
+</body>
+</html>

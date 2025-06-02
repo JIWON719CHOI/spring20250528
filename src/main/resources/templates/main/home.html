@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>홈</title>
+</head>
+<body>
+<!--${name}은 자바에서 넘긴 model.addAttribute("name", ...) 값-->
+<!--${count}도 마찬가지-->
+<h3 th:text="'안녕하세요, ' + ${name} + '님!'"></h3>
+<p th:text="'당신의 방문 횟수는 ' + ${count} + '회입니다.'"></p>
+
+<!--다시 로그인 버튼을 누르면 /main/login 으로 이동합니다.-->
+<form th:action="@{/main/login}" method="get">
+  <button>다시 로그인</button>
+</form>
+</body>
+</html>

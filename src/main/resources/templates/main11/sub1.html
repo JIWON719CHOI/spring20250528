@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> /main11/sub1 </h3>
+<form th:action="@{/main11/sub1}" method="post">
+    <!--    div*5>label+input:c[id][name][value]-->
+    <div>
+        <label for="check1">비누</label>
+        <input type="checkbox" name="item" id="check1" value="soap">
+    </div>
+    <div>
+        <label for="check2">비타민</label>
+        <input type="checkbox" name="item" id="check2" value="vitamin">
+    </div>
+    <div>
+        <label for="check3">소고기</label>
+        <input type="checkbox" name="item" id="check3" value="beef">
+    </div>
+    <div>
+        <label for="check4">돼지고기</label>
+        <input type="checkbox" name="item" id="check4" value="pork">
+    </div>
+    <div>
+        <label for="check5">커피</label>
+        <input type="checkbox" name="item" id="check5" value="coffee">
+    </div>
+
+    <button>장바구니 담기</button>
+</form>
+</body>
+</html>
