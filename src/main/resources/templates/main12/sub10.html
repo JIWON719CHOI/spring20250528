@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="display: flex; justify-content: space-around">
+    NAVBAR
+    <div th:if="${session.userId == null}">
+        <a th:href="@{/main12/sub11}">LOGIN</a>
+    </div>
+
+    <div th:if="${session.userId != null}">
+        <a th:href="@{/main12/sub11/logout}">LOGOUT</a>
+    </div>
+
+    <div th:unless="${session.userId == null}">
+        <div>
+            <span th:text="${session.userId}"></span>
+        </div>
+    </div>
+</div>
+<div th:if="${message != null}">
+    <p th:text="${message}"></p>
+</div>
+<h3>/main page</h3>
+<p>PAGE CONTENTS...</p>
+</body>
+</html>
