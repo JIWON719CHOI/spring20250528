@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid blue;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+<h3>상품 목록</h3>
+
+<hr>
+<form th:action="@{/main13/sub15}">
+    <label>
+        최대 가격
+        <input type="number" name="price" step="0.01" min="0"
+               th:value="${param.price ?: 100}">
+    </label>
+    <button>조회</button>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Supplier</th>
+        <th>Category</th>
+        <th>Unit</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${productList}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.supplier}"></td>
+        <td th:text="${product.category}"></td>
+        <td th:text="${product.unit}"></td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
