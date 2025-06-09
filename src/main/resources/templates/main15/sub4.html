@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!--: Thymeleaf 템플릿 문법을 사용할 수 있도록 XML 네임스페이스 선언입니다.-->
+<head>
+    <meta charset="UTF-8">
+    <!--문서의 문자 인코딩을 UTF-8로 지정합니다 (한글 깨짐 방지).-->
+    <title>상품 검색</title>
+    <style>
+        table, td, th {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            padding: 4px 8px;
+        }
+
+        .pagination a {
+            margin: 0 4px;
+            text-decoration: none;
+        }
+
+        .active {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+<h3>상품명 조회 (w/ paging)</h3>
+
+<!--📌 검색 폼-->
+<!--th:action : 타임리프 문법으로 /main15/sub4 경로로 GET 요청을 보냅니다. ${} 없이 썼으므로 정적인 경로입니다.-->
+<!--method="get" : URL 파라미터를 이용한 검색 방식입니다 (예: /main15/sub4?keyword=사과)-->
+<form th:action="@{/main15/sub4}" method="get">
+    <label>
+        상품명
+        <!--name="keyword" : 폼 입력값의 파라미터 이름 → 컨트롤러에서 @RequestParam("keyword")로 받을 수 있음.-->
+        <!--th:value="${param.keyword}" : 사용자가 입력한 검색어를 입력창에 그대로 유지시킵니다.
+                                            ${param.keyword}는 GET 요청으로 들어온 쿼리 파라미터를 의미합니다.-->
+        <input type="text" name="keyword" th:value="${param.keyword}">
+    </label>
+    <button type="submit">검색</button>
+</form>
+
+<br>
+
+<!--📌 결과 테이블-->
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>supplier</th>
+        <th>category</th>
+        <th>unit</th>
+        <th>price</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <!--th:each :  productList 라는 리스트를 순회하며 하나씩 product 라는 이름으로 꺼냅니다.
+                    productList는 컨트롤러에서 model.addAttribute("productList", ...)로 전달된 데이터입니다.-->
+    <tr th:each="product : ${productList}">
+
+        <!--th:text : 각각 product 객체의 필드를 th:text로 HTML에 출력합니다.
+                  예: product.name은 ProductDto 클래스의 getName() 메서드에 해당합니다.-->
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.supplier}"></td>
+        <td th:text="${product.category}"></td>
+        <td th:text="${product.unit}"></td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<br>
+
+<!--📌 페이지 네이션(Pagination)은 많은 양의 콘텐츠를 여러 페이지로 나누어,
+                                    사용자가 원하는 페이지를 쉽게 찾아볼 수 있도록 하는 기능-->
+<div class="pagination">
+    <!--🔹맨앞 : keyword 값은 계속 유지되도록 param.keyword를 넣어줍니다. -->
+    <a th:href="@{/main15/sub4(page=1, keyword=${param.keyword})}">맨앞</a>
+    |
+
+    <!--🔹이전 : ${prevPage}는 컨트롤러에서 계산하여 모델로 넘긴 값 (예: 현재 페이지 - 1) -->
+    <a th:href="@{/main15/sub4(page=${prevPage}, keyword=${param.keyword})}">이전</a>
+    |
+
+    <!--🔹현재 페이지 강조 #numbers.sequence(a, b) : Thymeleaf 내장 함수로 a부터 b까지 정수 시퀀스를 생성합니다. 숫자 배열 생성!
+                                                  예: #numbers.sequence(1, 5) → [1, 2, 3, 4, 5] 페이지 번호 나열!-->
+    <span th:each="num : ${#numbers.sequence(leftPage, rightPage)}">
+        <a th:href="@{/main15/sub4(page=${num}, keyword=${param.keyword})}"
+           th:text="${num}"
+           th:classappend="${num == param.page or (param.page == null and num == 1)} ? 'active' : ''"></a>|
+        <!--th:classappend : 현재 페이지이면 "active" 클래스를 추가합니다. 조건부 클래스 추가. 삼항 연산자 사용 가능!
+            ${param.page == null and num == 1} : page 파라미터가 없으면 1페이지로 간주-->
+    </span>
+
+    <!--nextPage, lastPage는 컨트롤러에서 계산해서 넘겨준 값입니다.-->
+
+    <!--🔹다음 -->
+    <a th:href="@{/main15/sub4(page=${nextPage}, keyword=${param.keyword})}">다음</a>
+    |
+
+    <!--🔹맨뒤 -->
+    <a th:href="@{/main15/sub4(page=${lastPage}, keyword=${param.keyword})}">맨뒤</a>
+</div>
+
+</body>
+</html>

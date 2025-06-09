@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>검색 + 페이징</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css">
+    <style>
+        table, tr, th, td {
+            border-collapse: collapse;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+<div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+    <h1 class="text-2xl font-bold mb-4">고객 검색 (검색 + 페이징)</h1>
+
+    <!-- 검색 폼 -->
+    <form th:action="@{/main14/sub4}" method="get" class="mb-6 flex gap-2">
+        <input
+                type="text"
+                name="keyword"
+                placeholder="이름 또는 연락처로 검색"
+                class="flex-1 border border-gray-300 rounded px-3 py-2"
+                th:value="${keyword}">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">검색</button>
+    </form>
+    <br>
+    <!-- 결과 테이블 -->
+    <div th:if="${#lists.isEmpty(customerList)}">
+        <p class="text-gray-500">검색 결과가 없습니다.</p>
+    </div>
+
+    <table th:if="${not #lists.isEmpty(customerList)}"
+           class="w-full table-auto border border-gray-300">
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="border px-2 py-1">ID</th>
+            <th class="border px-2 py-1">이름</th>
+            <th class="border px-2 py-1">연락처</th>
+            <th class="border px-2 py-1">국가</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${customerList}" class="hover:bg-gray-100">
+            <td class="border px-2 py-1" th:text="${c.id}"></td>
+            <td class="border px-2 py-1" th:text="${c.name}"></td>
+            <td class="border px-2 py-1" th:text="${c.contactName}"></td>
+            <td class="border px-2 py-1" th:text="${c.country}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- 페이징 링크 -->
+    <!--👉 총 페이지 수가 1보다 크면 (즉, 여러 페이지가 있다면) 페이징 링크들을 보여주겠다는 조건입니다.-->
+    <div th:if="${totalPages > 1}" class="mt-4 flex gap-2">
+
+        <!--👉 현재 페이지가 2 이상일 때만 "이전" 버튼이 보이게 하고, 클릭하면 page = 현재페이지 - 1인 링크로 이동합니다.
+        즉, 이전 페이지로 가는 링크예요.-->
+        <a th:href="@{/main14/sub4(page=${currentPage - 1}, keyword=${keyword})}"
+           th:if="${currentPage > 1}" class="px-3 py-1 border rounded">이전
+        </a>
+
+        <!--👉 1부터 totalPages 까지 반복해서 i 값을 돌립니다. 즉, 각 페이지 번호에 대한 링크를 순서대로 보여줍니다.-->
+        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+
+
+            <!--👉 반복 중인 i를 페이징 버튼으로 만들고,-->
+            <!--href: 클릭하면 해당 페이지로 이동 (page=${i})-->
+            <!--th:text="${i}": 숫자를 화면에 표시-->
+            <!--th:classappend: 현재 페이지인 경우에는 font-bold text-blue-600 클래스를 추가해서 진하게 파란색으로 표시합니다.-->
+      <a th:href="@{/main14/sub4(page=${i}, keyword=${keyword})}"
+         th:text="${i}"
+         th:classappend="${i == currentPage} ? 'font-bold text-blue-600' : ''"
+         class="px-2"></a>
+    </span>
+
+        <!--👉 현재 페이지가 마지막 페이지보다 작을 때만 "다음" 버튼이 보입니다.-->
+        <!--클릭하면 page = 현재페이지 + 1인 링크로 이동합니다.-->
+        <!--즉, 다음 페이지로 가는 버튼이에요.-->
+        <a th:href="@{/main14/sub4(page=${currentPage + 1}, keyword=${keyword})}"
+           th:if="${currentPage < totalPages}" class="px-3 py-1 border rounded">다음
+        </a>
+    </div>
+</div>
+</body>
+</html>

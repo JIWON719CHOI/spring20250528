@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h3>Notes로 직원 조회</h3>
+<hr>
+<form th:action="@{/main14/sub1}">
+    <label>
+        검색
+        <input type="text" name="keyword" th:value="${param.keyword ?: ''}">
+    </label>
+    <button>조회</button>
+</form>
+<hr>
+<!--table>thead>tr>th*6^^tbody>tr>td*6-->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>LNAME</th>
+        <th>FNAME</th>
+        <th>BDATE</th>
+        <th>PHOTO</th>
+        <th>NOTES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employeeList}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.lastName}"></td>
+        <td th:text="${emp.firstName}"></td>
+        <td th:text="${emp.birthDate}"></td>
+        <td th:text="${emp.photo}"></td>
+        <td th:text="${emp.notes}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

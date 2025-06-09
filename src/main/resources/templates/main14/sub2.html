@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>고객 검색</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css">
+    <style>
+        table, th, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+<div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+    <h1 class="text-2xl font-bold mb-4">고객 검색</h1>
+
+    <!-- 검색 폼 -->
+    <form th:action="@{/main14/sub2}" method="get" class="mb-6 flex gap-2">
+        <input
+                type="text"
+                name="keyword"
+                placeholder="이름 또는 연락처로 검색"
+                class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                th:value="${param.keyword}"
+        >
+        <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >검색
+        </button>
+    </form>
+    <br>
+    <!-- 결과 테이블 -->
+    <div th:if="${#lists.isEmpty(customerList)}">
+        <p class="text-gray-500">검색 결과가 없습니다.</p>
+    </div>
+
+    <table
+            th:if="${not #lists.isEmpty(customerList)}"
+            class="w-full table-auto border-collapse border border-gray-300"
+    >
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="border px-4 py-2">ID</th>
+            <th class="border px-4 py-2">이름</th>
+            <th class="border px-4 py-2">연락처</th>
+            <th class="border px-4 py-2">주소</th>
+            <th class="border px-4 py-2">우편번호</th>
+            <th class="border px-4 py-2">도시</th>
+            <th class="border px-4 py-2">국가</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${customerList}" class="hover:bg-gray-100">
+            <td class="border px-4 py-2" th:text="${c.id}">1</td>
+            <td class="border px-4 py-2" th:text="${c.name}">홍길동</td>
+            <td class="border px-4 py-2" th:text="${c.contactName}">홍연락</td>
+            <td class="border px-4 py-2" th:text="${c.address}">서울시 강남구</td>
+            <td class="border px-4 py-2" th:text="${c.postalCode}">12345</td>
+            <td class="border px-4 py-2" th:text="${c.city}">서울</td>
+            <td class="border px-4 py-2" th:text="${c.country}">대한민국</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
