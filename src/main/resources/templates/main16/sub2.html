@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--Thymeleaf 템플릿 엔진을 사용하기 위한 namespace 선언-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>새 공급자 등록</title>
+    <style>
+        body {
+            background-color: midnightblue;
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+
+        .form-container {
+            background-color: #fff;
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ddd;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid #aaa;
+        }
+
+        .submit-btn {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .message {
+            margin: 1rem auto;
+            max-width: 500px;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            border-left: 4px solid darkblue;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>새 공급자 등록</h2>
+
+    <!--서버에서 전달된 message가 존재하면 메시지를 출력.
+        예) "등록 완료", "저장 실패" 등을 보여줌
+        th:if는 조건 출력, th:text는 내용 삽입-->
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
+    <!--🔷 form 태그-->
+    <!--폼이 제출되면 POST 방식으로 /main16/sub2 주소로 보냄
+        @{} 구문은 Thymeleaf에서 경로를 자동 완성해줌-->
+    <form th:action="@{/main16/sub2}" method="post">
+
+        <!--🔷 입력 필드들-->
+        <!--name="name"은 서버에서 DTO 필드 이름과 매핑됩니다.
+            CustomerDto 또는 SupplierDto 등의 필드 이름과 일치해야 함.
+            나머지 필드 (contact, address, city, postalCode, country, phone)도 모두 같은 방식입니다.-->
+        <label>공급자 이름
+            <input type="text" name="name">
+        </label>
+        <label>담당자명
+            <input type="text" name="contact">
+        </label>
+        <label>주소
+            <input type="text" name="address">
+        </label>
+        <label>도시
+            <input type="text" name="city">
+        </label>
+        <label>우편번호
+            <input type="text" name="postalCode">
+        </label>
+        <label>국가
+            <input type="text" name="country">
+        </label>
+        <label>전화번호
+            <input type="text" name="phone">
+        </label>
+
+        <!--버튼 클릭 시 form이 제출됩니다.-->
+        <button type="submit" class="submit-btn">등록</button>
+    </form>
+</div>
+</body>
+</html>

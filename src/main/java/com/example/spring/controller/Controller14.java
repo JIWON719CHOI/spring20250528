@@ -78,7 +78,7 @@ public class Controller14 {
         while (rs.next()) {
             CustomerDto customerDto = new CustomerDto();
             customerDto.setId(rs.getInt("CustomerId"));
-            customerDto.setName(rs.getString("CustomerName"));
+            customerDto.setContactName(rs.getString("CustomerName"));
             customerDto.setContactName(rs.getString("ContactName"));
             customerDto.setAddress(rs.getString("Address"));
             customerDto.setPostalCode(rs.getString("PostalCode"));

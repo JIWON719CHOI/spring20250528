@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>공급자 정보 조회</title>
+</head>
+<body>
+<h3>공급자 정보 조회</h3>
+
+<!-- Flash 메시지 출력: 삭제 후 "x번 공급자 삭제됨!"을 보여줌 -->
+<div th:if="${message}" th:text="${message}" style="color: pink;"></div>
+
+<!-- 조회 폼: ID 값을 입력하여 공급자 정보 검색 -->
+<form th:action="@{/main16/sub4}">
+    <label>
+        ID
+        <input type="number" name="id" th:value="${param.id}">
+    </label>
+    <button>조회</button>
+</form>
+
+<br>
+
+<!-- 만약 supplier 모델 객체가 없다면 결과 없음 메시지 표시 -->
+<div th:if="${supplier == null}">
+    조회된 결과가 없습니다.
+</div>
+
+<!-- supplier 객체가 있는 경우, 상세 정보를 readonly 인풋 필드로 표시 -->
+<div th:if="${supplier != null}" th:object="${supplier}">
+    <div>
+        <label>
+            ID
+            <input type="text" readonly th:value="*{id}">
+        </label>
+    </div>
+    <div>
+        <label>
+            이름
+            <input type="text" readonly th:value="*{name}">
+        </label>
+    </div>
+    <div>
+        <label>
+            담당자
+            <input type="text" readonly th:value="*{contact}">
+        </label>
+    </div>
+    <div>
+        <label>
+            주소
+            <input type="text" readonly th:value="*{address}">
+        </label>
+    </div>
+    <div>
+        <label>
+            우편번호
+            <input type="text" readonly th:value="*{postalCode}">
+        </label>
+    </div>
+    <div>
+        <label>
+            도시
+            <input type="text" readonly th:value="*{city}">
+        </label>
+    </div>
+    <div>
+        <label>
+            국가
+            <input type="text" readonly th:value="*{country}">
+        </label>
+    </div>
+    <div>
+        <label>
+            전화번호
+            <input type="text" readonly th:value="*{phone}">
+        </label>
+    </div>
+    <div>
+        <!-- 삭제 폼: supplier 정보를 삭제할 때 사용, hidden 필드로 id 전달 -->
+        <form method="post" th:action="@{/main16/sub4}">
+            <input type="hidden" name="id" th:value="*{id}">
+            <button>삭제</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>공급자 관리</title>
+    <style>
+        body {
+            background-color: grey;
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        input, button {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+        }
+
+        button {
+            background-color: #3b82f6;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        .danger {
+            background-color: #ef4444;
+        }
+
+        .danger:hover {
+            background-color: #dc2626;
+        }
+
+        .warning {
+            background-color: #f59e0b;
+        }
+
+        .warning:hover {
+            background-color: #d97706;
+        }
+
+        .message {
+            background-color: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 메시지 출력 -->
+    <div th:if="${message}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- 등록 폼 -->
+    <section>
+        <h2>공급자 등록</h2>
+        <form action="/main16/sub0/add" method="post">
+            <input type="text" name="name" placeholder="회사명" required>
+            <input type="text" name="contact" placeholder="담당자명">
+            <input type="text" name="address" placeholder="주소">
+            <input type="text" name="city" placeholder="도시">
+            <input type="text" name="postalCode" placeholder="우편번호">
+            <input type="text" name="country" placeholder="국가">
+            <input type="text" name="phone" placeholder="전화번호">
+            <button type="submit" style="grid-column: span 2;">등록</button>
+        </form>
+    </section>
+
+    <!-- 조회 및 수정/삭제 폼 -->
+    <section>
+        <h2>공급자 조회/수정/삭제</h2>
+
+        <!-- 조회 -->
+        <form method="get" action="/main16/sub0">
+            <input type="number" name="id"
+                   placeholder="공급자 ID 입력"
+                   th:attr="min=1, max=${maxId}"
+                   id="idInput" required>
+            <button type="submit">조회</button>
+        </form>
+
+        <script>
+            const input = document.getElementById("idInput");
+
+            // ✅ 이 함수가 미리 정의되어 있어야 함!
+            function checkAndWrapValue() {
+                const min = parseInt(input.min);
+                const max = parseInt(input.max);
+                const value = parseInt(input.value);
+
+                console.log("min:", min, "max:", max, "current:", value);  // 로그 확인용
+
+                if (value < min) {
+                    input.value = max;
+                } else if (value > max) {
+                    input.value = min;
+                }
+            }
+
+
+            // 1️⃣ 키보드로 ↑ ↓ 순환 처리
+            input.addEventListener("keydown", function (e) {
+                console.log("keydown event:", e.key);
+                const min = parseInt(input.min);
+                const max = parseInt(input.max);
+                const current = parseInt(input.value || min);
+
+                if ((e.key === "ArrowDown" || e.key === "ArrowLeft") && current <= min) {
+                    input.value = max;
+                    e.preventDefault();
+                }
+
+                if ((e.key === "ArrowUp" || e.key === "ArrowRight") && current >= max) {
+                    input.value = min;
+                    e.preventDefault();
+                }
+            });
+
+            // 2️⃣ 마우스로 ▲▼ 클릭 or 직접 입력할 때
+            input.addEventListener("input", () => {
+                const min = parseInt(input.min);
+                const max = parseInt(input.max);
+                const value = parseInt(input.value);
+
+                if (isNaN(value)) return;
+
+                if (value < min) {
+                    input.value = max;
+                } else if (value > max) {
+                    input.value = min;
+                }
+            });
+
+            // 3️⃣ 엔터 치거나 포커스 빠졌을 때
+            input.addEventListener("change", checkAndWrapValue);
+            input.addEventListener("blur", checkAndWrapValue);
+
+        </script>
+
+
+        <!-- 수정/삭제 -->
+        <div th:if="${supplier}">
+            <form method="post" action="/main16/sub0/update">
+                <input type="hidden" name="id" th:value="${supplier.id}">
+                <input type="text" name="name" th:value="${supplier.name}">
+                <input type="text" name="contact" th:value="${supplier.contact}">
+                <input type="text" name="address" th:value="${supplier.address}">
+                <input type="text" name="city" th:value="${supplier.city}">
+                <input type="text" name="postalCode" th:value="${supplier.postalCode}">
+                <input type="text" name="country" th:value="${supplier.country}">
+                <input type="text" name="phone" th:value="${supplier.phone}">
+                <button type="submit" class="warning" style="grid-column: span 2;">수정</button>
+            </form>
+
+            <form method="post" action="/main16/sub0/delete">
+                <input type="hidden" name="id" th:value="${supplier.id}">
+                <button type="submit" class="danger" style="grid-column: span 2;">삭제</button>
+            </form>
+        </div>
+    </section>
+</div>
+</body>
+</html>

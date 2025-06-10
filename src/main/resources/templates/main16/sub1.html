@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>새 고객 등록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ddd;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid #aaa;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .message {
+            margin: 1rem auto;
+            max-width: 500px;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            border-left: 4px solid #28a745;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>새 고객 등록</h2>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
+    <form th:action="@{/main16/sub1}" method="post">
+        <label>고객 이름
+            <input type="text" name="name">
+        </label>
+        <label>담당자명
+            <input type="text" name="contactName">
+        </label>
+        <label>주소
+            <input type="text" name="address">
+        </label>
+        <label>우편번호
+            <input type="text" name="postalCode">
+        </label>
+        <label>도시
+            <input type="text" name="city">
+        </label>
+        <label>국가
+            <input type="text" name="country">
+        </label>
+        <button type="submit" class="submit-btn">등록</button>
+    </form>
+</div>
+</body>
+</html>

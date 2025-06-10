@@ -419,7 +419,7 @@ public class Controller13 {
 
             CustomerDto dto = new CustomerDto();
             dto.setId(customerID);
-            dto.setName(customerName);
+            dto.setContactName(customerName);
             dto.setContactName(contactName);
             dto.setAddress(address);
             dto.setCity(city);
@@ -721,8 +721,8 @@ public class Controller13 {
 
         while (resultSet.next()) {
             CustomerDto dto = new CustomerDto();
-            dto.setId(resultSet.getInt("CustomerId"));
-            dto.setName(resultSet.getString("CustomerName"));
+            dto.setId(resultSet.getInt("customerId"));
+            dto.setContactName(resultSet.getString("customerName"));
             dto.setCity(resultSet.getString("City"));
             dto.setCountry(resultSet.getString("Country"));
             dto.setContactName(resultSet.getString("ContactName"));

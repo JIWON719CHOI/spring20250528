@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>고객 정보 수정</h3>
+<br>
+<form th:action="@{/main16/sub5}">
+    <label>
+        ID
+        <input type="text" name="id" th:value="${param.id}">
+    </label>
+    <button>조회</button>
+</form>
+<br>
+<div th:if="${customer == null}">
+    조회 결과가 없습니다.
+</div>
+<!--div*7>label>input[th:value][name]-->
+<div th:if="${customer != null}" th:object="${customer}">
+    <form method="post" th:action="@{/main16/sub5}">
+        <div>
+            <label>
+                아이디
+                <input type="text" th:value="*{id}" name="id" readonly>
+            </label>
+        </div>
+        <div>
+            <label>
+                이름
+                <input type="text" th:value="*{name}" name="name">
+            </label>
+        </div>
+        <div>
+            <label>
+                계약명
+                <input type="text" th:value="*{contactName}" name="contactName">
+            </label>
+        </div>
+        <div>
+            <label>
+                주소
+                <input type="text" th:value="*{address}" name="address">
+            </label>
+        </div>
+        <div>
+            <label>
+                도시
+                <input type="text" th:value="*{city}" name="city">
+            </label>
+        </div>
+        <div>
+            <label>
+                우편번호
+                <input type="text" th:value="*{postalCode}" name="postalCode">
+            </label>
+        </div>
+        <div>
+            <label>
+                국가
+                <input type="text" th:value="*{country}" name="country">
+            </label>
+        </div>
+        <div>
+            <button>저장</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
