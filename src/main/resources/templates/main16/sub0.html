@@ -106,67 +106,30 @@
         <form method="get" action="/main16/sub0">
             <input type="number" name="id"
                    placeholder="공급자 ID 입력"
-                   th:attr="min=1, max=${maxId}"
+                   th:attr="data-min=1, data-max=${maxId}"
                    id="idInput" required>
             <button type="submit">조회</button>
         </form>
 
         <script>
+            //.getElementById() 메서드는 주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고,
+            // 이를 나타내는 Element 객체를 반환합니다.
+            // ID는 문서 내에서 유일해야 하기 때문에 특정 요소를 빠르게 찾을 때 유용
             const input = document.getElementById("idInput");
-
-            // ✅ 이 함수가 미리 정의되어 있어야 함!
-            function checkAndWrapValue() {
-                const min = parseInt(input.min);
-                const max = parseInt(input.max);
-                const value = parseInt(input.value);
-
-                console.log("min:", min, "max:", max, "current:", value);  // 로그 확인용
-
-                if (value < min) {
-                    input.value = max;
-                } else if (value > max) {
-                    input.value = min;
-                }
-            }
-
-
-            // 1️⃣ 키보드로 ↑ ↓ 순환 처리
-            input.addEventListener("keydown", function (e) {
-                console.log("keydown event:", e.key);
-                const min = parseInt(input.min);
-                const max = parseInt(input.max);
-                const current = parseInt(input.value || min);
-
-                if ((e.key === "ArrowDown" || e.key === "ArrowLeft") && current <= min) {
-                    input.value = max;
-                    e.preventDefault();
-                }
-
-                if ((e.key === "ArrowUp" || e.key === "ArrowRight") && current >= max) {
-                    input.value = min;
-                    e.preventDefault();
-                }
-            });
-
-            // 2️⃣ 마우스로 ▲▼ 클릭 or 직접 입력할 때
-            input.addEventListener("input", () => {
-                const min = parseInt(input.min);
-                const max = parseInt(input.max);
-                const value = parseInt(input.value);
+            input.addEventListener("change", (e) => {
+                // getAttribute는 특정 HTML 요소의 속성 값을 가져오는 메소드입니다.
+                // 특정 HTML 요소에서 지정된 속성 값을 읽어오기 위해 사용됩니다.
+                const min = Number(e.target.getAttribute("data-min"));
+                const max = Number(e.target.getAttribute("data-max"));
+                const value = Number(e.target.value);
 
                 if (isNaN(value)) return;
 
-                if (value < min) {
-                    input.value = max;
-                } else if (value > max) {
-                    input.value = min;
-                }
-            });
-
-            // 3️⃣ 엔터 치거나 포커스 빠졌을 때
-            input.addEventListener("change", checkAndWrapValue);
-            input.addEventListener("blur", checkAndWrapValue);
-
+                const m = max - min + 1;
+                console.log('ch', value, m, min, max)
+                e.target.value = (value - min + m) % m + min;
+                console.log(e.target.value);
+            })
         </script>
 
 

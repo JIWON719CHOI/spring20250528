@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>각 데이터 타입 보기</h3>
+<div th:object="${data}">
+    <div>
+        <input type="text" th:value="*{col1}">
+    </div>
+    <div>
+        <input type="number" th:value="*{col2}">
+    </div>
+    <div>
+        <input type="number" th:value="*{col3}">
+    </div>
+    <div>
+        <input type="number" th:value="*{col4}" step="0.01">
+    </div>
+    <div>
+        <input type="date" th:value="*{col5}">
+    </div>
+    <div>
+        <input type="time" th:value="*{col6}">
+    </div>
+    <div>
+        <input type="datetime-local" th:value="*{col7}">
+    </div>
+</div>
+</body>
+</html>

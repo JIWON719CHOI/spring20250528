@@ -1,0 +1,73 @@
+USE mydatabase;
+
+CREATE TABLE table22
+(
+    col1 INT,
+    col2 VARCHAR(10)
+);
+
+# ALTER TABLE : 테이블 수정
+# 컬럼 TYPE 제약사항 변경
+
+# 컬럼 추가
+ALTER TABLE table22
+    ADD COLUMN col3 DATETIME NOT NULL DEFAULT NOW();
+
+DESC table22;
+SELECT *
+FROM table22;
+
+# 연습 : table22 에 새로운 컬럼 2개 추가
+ALTER TABLE table22
+    ADD COLUMN col4 INT;
+ALTER TABLE table22
+    ADD COLUMN col0 INT FIRST;
+
+# 컬럼명 변경
+CREATE TABLE table23
+(
+    col1 INT,
+    col2 VARCHAR(10)
+);
+
+ALTER TABLE table23
+    CHANGE COLUMN col1 vol1 INT;
+
+DESC table23;
+
+ALTER TABLE table23
+    CHANGE COLUMN col2 vol2 VARCHAR(10) NOT NULL UNIQUE;
+
+ALTER TABLE table23
+    MODIFY COLUMN vol1 INT NOT NULL UNIQUE;
+
+ALTER TABLE table23
+    CHANGE COLUMN vol2 col2 DEC(10, 2) NOT NULL UNIQUE;
+
+CREATE TABLE table24
+(
+    col1 VARCHAR(5),
+    col2 BIGINT
+);
+INSERT INTO table24
+    (col1, col2)
+VALUES ('abcde', 4000000000);
+INSERT INTO table24
+    (col1, col2)
+VALUES ('abcde', 4000000000);
+SELECT *
+FROM table24;
+ALTER TABLE table24
+    MODIFY COLUMN col1 VARCHAR(3);
+ALTER TABLE table24
+    MODIFY COLUMN col1 VARCHAR(10);
+
+ALTER TABLE table24
+    MODIFY COLUMN col1 VARCHAR(10) UNIQUE;
+
+ALTER TABLE table24
+    MODIFY COLUMN col2 INT;
+
+ALTER TABLE table24
+    MODIFY COLUMN col2 BIGINT UNIQUE;
+

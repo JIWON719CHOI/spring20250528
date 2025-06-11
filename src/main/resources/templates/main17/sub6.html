@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>데이터 타입별 입력</h3>
+<form th:action="@{/main17/sub6}" method="post">
+    <div>
+        <input type="text" placeholder="텍스트" name="col1">
+    </div>
+    <div>
+        <input type="number" placeholder="정수" name="col2">
+    </div>
+    <div>
+        <input type="number" placeholder="빅 정수" name="col3">
+    </div>
+    <div>
+        <input type="number" placeholder="실수" step="0.01" name="col4">
+    </div>
+    <div>
+        <input type="date" placeholder="날짜" name="col5">
+    </div>
+    <div>
+        <input type="time" placeholder="시간" name="col6" step="1">
+    </div>
+    <div>
+        <input type="datetime-local" placeholder="날짜 시간" name="col7">
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+</body>
+</html>

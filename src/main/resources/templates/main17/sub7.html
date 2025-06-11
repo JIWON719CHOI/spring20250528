@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>인적사항 추가하기</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 40px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        form {
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin-bottom: 40px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="number"],
+        form input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        form input[type="text"]:focus,
+        form input[type="date"]:focus,
+        form input[type="number"]:focus,
+        form input[type="datetime-local"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        thead {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 700;
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tbody tr:hover {
+            background-color: #f1f8ff;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+            form, table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>인적사항 추가하기</h1>
+<form action="/main17/sub7" method="post">
+    <label for="name">이름:</label>
+    <input id="name" type="text" name="name" required />
+
+    <label for="birth_date">생년월일:</label>
+    <input id="birth_date" type="date" name="birthDate" required />
+
+    <label for="score">점수:</label>
+    <input id="score" type="number" name="score" step="0.01" required />
+
+    <label for="born_at">태어난시간:</label>
+    <input id="born_at" type="datetime-local" name="bornAt" required />
+
+    <button type="submit">제출</button>
+</form>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>이름</th>
+            <th>생일</th>
+            <th>점수</th>
+            <th>일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${list}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.birthDate}"></td>
+            <td th:text="${item.score}"></td>
+            <td th:text="${item.bornAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
