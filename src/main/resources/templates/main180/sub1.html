@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>계좌 관리</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>계좌 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>소유자</th>
+        <th>잔액</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="acc : ${accounts}">
+        <td th:text="${acc.id}"></td>
+        <td th:text="${acc.owner}"></td>
+        <td th:text="${acc.balance} + '원'"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="section">
+    <h2>계좌 생성</h2>
+    <form action="/main180/create" method="post">
+        <input type="text" name="owner" placeholder="소유자 이름" required>
+        <input type="number" name="amount" placeholder="초기 금액" required>
+        <button type="submit">계좌 생성</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>계좌 삭제</h2>
+    <form action="/main180/delete" method="post">
+        <input type="number" name="id" placeholder="계좌 ID" required>
+        <button type="submit">계좌 삭제</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>송금</h2>
+    <form action="/main180/transfer" method="post">
+        <input type="number" name="from" placeholder="보내는 계좌 ID" required>
+        <input type="number" name="to" placeholder="받는 계좌 ID" required>
+        <input type="number" name="amount" placeholder="송금 금액" required>
+        <button type="submit">송금</button>
+    </form>
+</div>
+
+</body>
+</html>

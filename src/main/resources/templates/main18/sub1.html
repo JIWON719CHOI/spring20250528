@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, tr, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h3>트랜잭션 연습</h3>
+<hr>
+<h6>성공1</h6>
+<form th:action="@{/main18/sub2}" method="post">
+    <button>500원 송금</button>
+</form>
+<hr>
+<h6>실패1</h6>
+<form th:action="@{/main18/sub3}" method="post">
+    <button>500원 송금</button>
+</form>
+<hr>
+<h6>성공2 모두 성공</h6>
+<form th:action="@{/main18/sub4}" method="post">
+    <button>500원 송금</button>
+</form>
+<hr>
+<h6>실패2 모두 실패</h6>
+<form th:action="@{/main18/sub5}" method="post">
+    <button>500원 송금</button>
+</form>
+<hr>
+<!--table>thead>tr>th*2^^tbody>tr>td*2-->
+<table>
+    <thead>
+    <tr>
+        <th>사용자</th>
+        <th>잔액</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${list}">
+        <td th:text="${user.user}"></td>
+        <td th:text="${user.money}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

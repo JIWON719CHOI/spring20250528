@@ -1,0 +1,30 @@
+<!-- history.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>거래 내역</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h1>거래 내역</h1>
+<table>
+    <thead>
+    <tr>
+        <th>날짜</th>
+        <th>보낸 사람</th>
+        <th>받는 사람</th>
+        <th>금액</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="h : ${historyList}">
+        <td th:text="${#dates.format(h.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${h.fromOwner}"></td>
+        <td th:text="${h.toOwner}"></td>
+        <td th:text="${h.amount} + '원'"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/bank/list">← 계좌 목록으로 돌아가기</a>
+</body>
+</html>
