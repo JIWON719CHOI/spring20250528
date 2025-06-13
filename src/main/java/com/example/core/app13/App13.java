@@ -23,18 +23,19 @@ public class App13 {
 @Configuration
 class AppConfiguration {
     @Bean // 이 spring bean의 이름은 메소드 이름으로 결정
-    public Service1 makeBean(){
+    public Service1 makeBean() {
         return new Service1();
     }
+
     @Bean
-    public Service2 makeBean2(){
+    public Service2 makeBean2() {
         return new Service2();
     }
 }
 
 @Component
 @RequiredArgsConstructor
-class Controller1{
+class Controller1 {
     final Service1 service1;
     final Service2 service2;
 
@@ -44,13 +45,13 @@ class Controller1{
     }
 }
 
-class Service1{
+class Service1 {
     public void crud() {
         System.out.println("Service1.crud");
     }
 }
 
-class Service2{
+class Service2 {
     public void crud() {
         System.out.println("Service2.crud");
     }
