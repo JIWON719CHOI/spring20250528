@@ -1,7 +1,7 @@
 package com.example.spring.service;
 
 import com.example.spring.entity.*;
-import com.example.spring.repository.*;
+import com.example.spring.repo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -159,5 +159,58 @@ VALUES ('Gojo', 99.99, 'Kyoto'),
        ('Geto', 88.88, 'Tokyo'),
        ('Ieiri', 77.77, 'Tokyo');
 
+DESC w3schools.Employees;
+
+CREATE TABLE employee
+(
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    last_name  VARCHAR(255),
+    first_name VARCHAR(255),
+    birth_date DATE,
+    photo      VARCHAR(255),
+    notes      VARCHAR(5000)
+);
+
+
+INSERT INTO jpa.employee
+    (last_name, first_name, birth_date, photo, notes)
+SELECT LastName, FirstName, BirthDate, Photo, Notes
+FROM w3schools.Employees;
+
+DESC w3schools.Suppliers;
+
+CREATE TABLE supplier
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    contact_name  VARCHAR(255),
+    address       VARCHAR(255),
+    city          VARCHAR(255),
+    postal_code   VARCHAR(255),
+    country       VARCHAR(255),
+    phone         VARCHAR(255)
+);
+
+INSERT INTO jpa.supplier
+(supplier_name, contact_name, address, city, postal_code, country, phone)
+SELECT suppliername, contactname, address, city, postalcode, country, phone
+FROM w3schools.Suppliers;
+
+DESC w3schools.Products;
+
+CREATE TABLE product
+(
+    id           INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(255),
+    supplier_id  INT,
+    category_id  INT,
+    unit         VARCHAR(255),
+    price        DEC(10, 2)
+);
+
+INSERT INTO jpa.product
+    (product_name, supplier_id, category_id, unit, price)
+SELECT productname, supplierid, categoryid, unit, price
+FROM w3schools.Products;
 
 
