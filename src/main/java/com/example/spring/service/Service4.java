@@ -103,13 +103,10 @@ public class Service4 {
         Page<Entity19> page = entity19Repository.findAll(pageable);
 
         List<Entity19> content1 = page.getContent();
-        int totalPages = page.getTotalPages();
-        long totalElements = page.getTotalElements();
-        boolean hasNext = page.hasNext();
 
         System.out.println("🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸");
-        System.out.println("총 항목 수 = " + totalElements);
-        System.out.println("총 페이지 수 = " + totalPages);
+        System.out.println("총 항목 수 = " + page.getTotalElements());
+        System.out.println("총 페이지 수 = " + page.getTotalPages());
         System.out.println("현재 페이지 번호 = " + page.getNumber());
         System.out.println("다음 페이지 있음? " + page.hasNext());
         System.out.println("이전 페이지 있음? " + page.hasPrevious());
