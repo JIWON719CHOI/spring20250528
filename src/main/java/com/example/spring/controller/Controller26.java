@@ -2,12 +2,14 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.Entity36Dto;
 import com.example.spring.dto.Entity39Dto;
+import com.example.spring.dto.OrderInfo;
 import com.example.spring.dto.ProductInfo;
 import com.example.spring.entity.Entity34;
 import com.example.spring.entity.Entity36;
 import com.example.spring.service.Service8;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -122,5 +124,20 @@ public class Controller26 {
         // forward
 
         return "main26/sub10";
+    }
+
+    @GetMapping("sub12")
+    public String sub12() {
+        List<OrderInfo> info = service8.action12();
+        for (OrderInfo orderInfo : info) {
+            System.out.println("orderInfo = " + orderInfo.getOrderDate());
+            System.out.println("orderInfo = " + orderInfo.getProductName());
+            System.out.println("orderInfo = " + orderInfo.getPrice());
+            System.out.println("orderInfo = " + orderInfo.getQuantity());
+            System.out.println("orderInfo = " + orderInfo.getCategoryName());
+            System.out.println();
+        }
+        return "main26/sub12";
+
     }
 }
