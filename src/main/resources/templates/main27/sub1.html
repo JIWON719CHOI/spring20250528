@@ -8,6 +8,38 @@
 <h3>
     파일 업로드 예제
 </h3>
+
+<!--/*
+연습 :
+여러 파일을 올리는 form, request handler method, service 메소드
+*/-->
+<form th:action="@{/main27/sub3}" method="post" enctype="multipart/form-data">
+    <input type="file" name="upload" accept="image/*" multiple>
+    <button>전송</button>
+</form>
+
+<hr>
+<!--/*
+ 연습
+ 아래 form을 완성하고
+ controller에 request handler method * 1
+ service의 메소드 *1
+ C:/Temp/uploadFiles/ 안에 업로드 한 파일 저장
+ */-->
+<form th:action="@{/main27/sub2}" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="fileText2">주소</label>
+        <input type="text" id="fileText2" name="address">
+    </div>
+    <div>
+        <label for="fileInput2">파일</label>
+        <input type="file" id="fileInput2" name="uploadFile">
+    </div>
+    <button>전송</button>
+</form>
+
+<hr>
+
 <form th:action="@{/main27/sub1}" method="post" enctype="multipart/form-data">
     <div>
         <label for="fileText1">사용자명</label>
