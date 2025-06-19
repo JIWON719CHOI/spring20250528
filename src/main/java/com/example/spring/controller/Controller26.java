@@ -1,9 +1,16 @@
 package com.example.spring.controller;
 
+import com.example.spring.dto.Entity36Dto;
+import com.example.spring.dto.Entity39Dto;
+import com.example.spring.dto.ProductInfo;
+import com.example.spring.entity.Entity34;
+import com.example.spring.entity.Entity36;
 import com.example.spring.service.Service8;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -56,5 +63,64 @@ public class Controller26 {
     public String sub6() {
         service8.action6();
         return "main26/sub6";
+    }
+
+    @RequestMapping("sub7")
+    public String sub7() {
+        service8.action7();
+        return "main26/sub7";
+    }
+
+    @RequestMapping("sub8")
+    public String sub8() {
+        Entity36 l1 = service8.action8();
+
+        System.out.println(l1.getRegisteredAt());
+
+        Entity34 s1 = l1.getStudent();
+
+        // LAZY일 경우 이 때 select 쿼리 실행
+        // session이 닫혀서 exception 발생
+        String name = s1.getName();
+        System.out.println("name = " + name);
+
+        return "main26/sub8";
+    }
+
+    @RequestMapping("sub9")
+    public String sub9() {
+        Entity36Dto l1 = service8.action9();
+
+        System.out.println(l1.getRegisteredAt());
+        System.out.println("name = " + l1.getStudentName());
+
+        return "main26/sub8";
+    }
+
+    @RequestMapping("sub10")
+    public String sub10() {
+        List<Entity39Dto> result = service8.action10();
+
+        // model에 넣고
+        // forward
+
+        return "main26/sub10";
+    }
+
+    @RequestMapping("sub11")
+    public String sub11() {
+        List<ProductInfo> result = service8.action11();
+
+        for (ProductInfo productInfo : result) {
+            System.out.println("productInfo = " + productInfo.getId());
+            System.out.println("productInfo = " + productInfo.getProductName());
+            System.out.println("productInfo = " + productInfo.getPrice());
+            System.out.println("productInfo = " + productInfo.getCategoryName());
+            System.out.println();
+        }
+        // model에 넣고
+        // forward
+
+        return "main26/sub10";
     }
 }

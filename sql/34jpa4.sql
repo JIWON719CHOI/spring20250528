@@ -85,3 +85,25 @@ CREATE TABLE my_table38
     inserted_at DATETIME    NOT NULL DEFAULT NOW(),
     FOREIGN KEY (author) REFERENCES my_table37 (email)
 );
+
+CREATE TABLE my_table39
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(30),
+    unit        VARCHAR(30),
+    price       INT,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES my_table40 (id)
+);
+
+# Category Table
+CREATE TABLE my_table40
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(40),
+    description VARCHAR(50)
+);
+
+SELECT p.id, p.name product_name, p.price, m.name category_name
+FROM my_table39 p
+         JOIN my_table40 m on p.category_id = m.id;

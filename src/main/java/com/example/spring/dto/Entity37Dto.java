@@ -1,6 +1,5 @@
 package com.example.spring.dto;
 
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Value;

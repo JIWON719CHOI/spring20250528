@@ -1,5 +1,6 @@
-package com.example.spring.entity;
+package com.example.spring.dto;
 
+import com.example.spring.entity.Entity38;
 import lombok.Value;
 
 import java.io.Serializable;
