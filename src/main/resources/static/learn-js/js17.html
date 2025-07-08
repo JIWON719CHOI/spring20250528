@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 단락 평가(short circuit evaluation)
+
+    // &&, ||
+
+    // && : 양 변이 둘다 true 일때 true, 나머지는 false
+    // true && true = true
+    // true && false = false
+    // false && true = false
+    // false && false = false
+    // 첫 항이 true 이면 두번째 항 연산함 (and : if then) 두번째 항 연산 유도..
+    let a = 10;
+    let b = 30;
+    let r1 = ((a++) < 0 && (b++) < 100);
+    console.log(a, b, r1);
+    let r2 = ((a--) > 0 && (b++) < 100);
+    console.log(a, b, r2);
+
+    let r3 = (a++) < 0 && `hello world`;
+    console.log(r3);
+    let r4 = (a--) > 0 && `hello world`;
+    console.log(r4);
+
+    // || : 양 변이 둘 다 false 일 때 false, 나머지는 true
+    // true || true = true
+    // true || false = true
+    // false || true = true
+    // false || false = false
+    // 첫 번째 항이 false 이면 두번째 항 연사결과가 최종 결과 (or : if not) 두번째 항 연산 유도 안함
+    let c = 5;
+    let r5 = c > 0 || `wow`;
+    console.log(r5);
+    let r6 = c < 0 || `wow`;
+    console.log(r6);
+
+
+</script>
+</body>
+</html>

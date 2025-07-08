@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 배열
+    const a = []; // 빈배열 (empty array)
+    const b = ["java", "css", "react"]; // 3개의 원소(아이템)
+
+    // 배열의 길이
+    console.log(a.length);
+    console.log(b.length);
+
+    // 각 아이템(원소)에 접근
+    console.log(b[0]);
+    console.log(b[1]);
+    console.log(b[2]);
+
+    b[2] = "vue";
+
+    console.log(b[2]);
+
+    // 배열은 참조값으로 접근
+    console.log(b);
+
+    const c = b;
+
+    console.log(c);
+
+    c[2] = "angular";
+
+    console.log(c);
+    console.log(b);
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 얕은 복사
+    const a = {name: `gojo`, age: 28, address: {city: `Tokyo`, country: `Japan`}};
+
+    const b = {...a};
+    b.name = `geto`;
+    console.log(b);
+    console.log(a);
+
+    b.address.city = `Kyoto`;
+    console.log(b);
+    console.log(a);
+
+    // 깊은 복사
+    const c = {name: `kim`, address: {city: `seoul`, country: `korea`}};
+
+    const d = {...c, address: {...c.address}};
+    d.address.city = `jeju`;
+    console.log(c);
+
+    // JSON 변경 -> 파싱 *자주 쓰임
+    const e = JSON.parse(JSON.stringify(c));
+    e.address.city = `busan`;
+    console.log(c);
+
+    // structuredClone() : 현재는 자주 안씀. brand new
+    const f = structuredClone(c);
+    f.address.city = `daegu`;
+    console.log(f);
+    console.log(c);
+
+    const g = {score: {math: 99.11, english: 88.22, korean: 77.33}, className: `중앙`};
+    const h = structuredClone(g);
+    console.log(h);
+    console.log(g);
+
+
+</script>
+</body>
+</html>

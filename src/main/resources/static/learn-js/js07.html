@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const a = [5, 3, 1, 9, -7, -5];
+
+    // 배열 메소드
+    // filter 는 제공된 함수에 각 원소를 넣어서 true를 리턴한 것만 모은 배열을 리턴
+    const b = a.filter(e => {
+        return true;
+    });
+
+    // a와 b의 참조값은 다르다 아래도 계속.. 다르다...
+    console.log(b);
+    b[0] = 10;
+    console.log(a);
+    console.log(b);
+
+    const c = a.filter(e => {
+        return false;
+    });
+    console.log(c);
+
+    const d = a.filter(e => e > 0); // 밑에 것 줄인 거. 람다식 비스무리...
+    // const d = a.filter(e => {
+    //     return e > 0;
+    // });
+    console.log(d);
+
+    const e = a.filter(e => e < 0);
+    console.log(e);
+
+    // map : 각 원소를 제공된 함수에 넣은 결과를 모은 배열을 리턴
+    const f = [`java`, `python`, `react`, `vue`];
+    const g = f.map((e) => {
+        return `hello`;
+    });
+    console.log(g);
+    const h = f.map(e => {
+        return e;
+    });
+    console.log(h);
+    h[0] = `css`;
+    console.log(h);
+    console.log(f);
+
+    const i = f.map(e => {
+        return `hello ${e}`;
+    });
+    console.log(i);
+
+    const j = f.map(e => e.length);
+    console.log(j);
+
+    const k = [5, 7, 1, 0, -2, -1, 9];
+    const l = k.map(e => e * e);
+    console.log(l);
+</script>
+</body>
+</html>

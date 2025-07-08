@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 분해 할당과 함수 파라미터
+    function action1(param) {
+        const name = param.name;
+        const address = param.address;
+
+        console.log(name, address);
+    }
+
+    function action2({name, address}) {
+        console.log(name, address);
+    }
+
+    function action3({name, address = `okinawa`}) {
+        console.log(name, address);
+    }
+
+    action1({name: `gojo`, address: `tokyo`});
+    action1({name: `geto`, address: `kyoto`});
+
+    action2({name: `satoru`, address: `shinjuku`});
+    action2({name: `suguru`, address: `shibuya`});
+
+    action3({name: `itadori`});
+
+    function action4({score = 0, skill}) {
+        console.log(score, skill);
+    }
+
+    action4({score: 99.99, skill: `limitless`});
+    action4({skill: `jujutsu`});
+
+    const a = {score: 99, skill: `jujutsu`}
+    action4(a);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 동기 (sync) 코드 실행
+    console.log(`code1`);
+    console.log(`code2`);
+    console.log(`code3`);
+    console.log(`code4`);
+
+    // 비동기 (async) 코드 실행
+    // promise :
+    const action1 = new Promise((resolve) => resolve(10));
+    action1.then((res) => console.log(res));
+    console.log(`code5`);
+
+
+</script>
+</body>
+</html>

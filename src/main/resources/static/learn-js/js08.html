@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 객체
+    // {} : 객체
+    // (속성명: 속성값) 쌍이 적성됨. property`속성`
+    const a = {}; // 이게 객체다!
+    const b = {address: `Tokyo`, age: 28};
+    console.log(b);
+    b.age = 37;
+    b.address = `Kyoto`;
+    console.log(b);
+
+    // 객체는 참조값으로 접근
+    const c = b;
+    console.log(c);
+    c.age = 99;
+    console.log(c);
+    console.log(b);
+
+    const d = {name: `Gojo`, number: 7};
+    // 참조값 같아.
+    const e = d;
+
+    e.name = `Geto`;
+    console.log(d.name); //?
+
+    const f = {name: `kim`, number: 13};
+    f.name = d.name;
+    f.number = d.number;
+
+    d.name = `park`;
+    console.log(f.name);
+    console.log(f);
+    console.log(d);
+    console.log(e);
+
+    const g = {numbers: [2, 3], name: "Satoru"};
+    const h = {numbers: [], name: "Suguru"};
+    h.numbers = g.numbers;
+    h.name = g.name;
+
+    g.name = `kim`;
+    console.log(h.name);
+    g.numbers[0] = 22;
+    console.log(h.numbers); // ?
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const a = [6, 8, 10];
+    const b = [...a];
+    const c = {name: `son`, number: 7};
+    const d = {...c};
+
+    // rest 연산자 : 함수에 전달된 인수의 나머지를 모두 대입
+    function action1(a, b, ...c) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    };
+
+    action1(`java`); // a: java, b: undefined, c: []
+    action1(5,3); // a: 5, b: 3, c: []
+    action1(`css`, 3, 7, `spring`); // a: css, b: 3 , c: [7, `spring`]
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // destructuring assignment
+    // (구조) 분해 할당 :
+
+    const a = [10, 30, 50];
+    const b = a[0];
+    const c = a[1];
+    const d = a[2];
+
+    console.log(b, c, d);
+
+    const [e, f, g] = a;
+    console.log(e, f, g);
+
+    const h = [`java`, `boot`, `react`];
+    const [i, j, k] = h;
+    console.log(i, j, k);
+
+    // destructuring assignment
+    // 객체
+    const n = {name: `gojo`, address: `tokyo`, city: `shinjuku`, country: `japan`};
+    const name = n.name;
+    const address = n.address;
+    console.log(name, address);
+
+    // 분해 할당
+    const {city, country} = n;
+    console.log(city, country);
+
+    // const {name, address} = n; 위에 이미 변수를 선언해서 다시 또 못써용
+    // console.log(city, country);
+
+    const o = {score: 99.99, nick: `gojo`, skill: `limitless`};
+    const {score, nick, skill} = o;
+    console.log(score, nick, skill);
+
+</script>
+</body>
+</html>

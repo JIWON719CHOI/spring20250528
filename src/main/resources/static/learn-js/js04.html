@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 문자열 작성법 "", '', ``
+    const a = "큰따옴표";
+    console.log(a);
+    const b = '작은따옴표';
+    console.log(b);
+    const c = `Backtick`;
+    console.log(c);
+    const d = `
+    여러줄
+    작성 가능하니까
+    얼마나 좋아~
+    `;
+    console.log(d);
+
+    // `` : template literal
+    const e = 5;
+    const f = "Gojo";
+
+    const g = `나는 ${f}이고, 번호는  ${e + 2}입니다.`
+    console.log(g);
+
+</script>
+</body>
+</html>

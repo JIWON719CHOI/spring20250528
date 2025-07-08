@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 분해 할당
+    const a = {name: `gojo`, age: 28, country: `japan`};
+    const {name, age, country} = a;
+    console.log(name, age, country);
+
+    // const name = `geto`; 이미 위에서 선언해서 써부럿어~ 못써~
+    const {name: otherName, age: yourAge} = a;
+    // const otherName = a.name;
+    // const yourAge = a.age; 이거 두개와 위는 같다.
+    console.log(otherName, yourAge);
+
+    const {name: myName, age: ourAge} = a;
+    console.log(myName); // gojo
+    console.log(ourAge); // 28
+
+    // 기본값
+    const b = {address: `Tokyo`, city: `Shibuya`};
+    const {address, city, product = `jujutsu`} = b; // product가 없다면~ `jujutsu`로 받아줘 라고 기본값 설정.
+    console.log(address, city, product); // tokyo, shibuya, undefined
+
+    const d = {birth: `89-12-07`, married: false, team: `TokyoJujutsuHigh`};
+    const {birth, married, team, company = `JujutsuHQ`} = d;
+    console.log(birth);
+    console.log(company);
+</script>
+</body>
+</html>

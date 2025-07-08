@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 객체 복사
+    const a = {name: `Gojo`, age: 28, address: `Tokyo`};
+    const b = a; // 참조값 복사
+
+    b.name = `Geto`;
+    console.log(b);
+    console.log(a);
+
+    // 객체 복사 이 방법 잘 안씀..
+    const c = [];
+    c.name = a.name;
+    c.age = a.age;
+    c.address = a.address;
+
+    console.log(c);
+
+    // 객체 복사 이것도 잘 안쓰는데 가끔... 참조값 달라요~
+    const d = {name: a.name, age: a.age, address: a.address};
+
+    // 객체 복사 : spread 연산자
+    // {...a};
+    const e = {...a};
+
+    const f = {...a, city: `Shinjuku`}; // 속성 추가
+    const g = {...a, name: `Geto`}; // 속성 변경
+
+    const h = {email: `gmail`, score: 99.22, city: `Tokyo`};
+    const i = {...h};
+    const j = {...h, country: `Japan`};
+    const k = {...h, score: 88.11};
+
+    console.log(h, i, j, k);
+
+
+</script>
+</body>
+</html>
